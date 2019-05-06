@@ -10,7 +10,6 @@ import logging
 import json_logging
 import os
 import random
-import redis
 import socket
 import time
 import traceback
@@ -28,8 +27,6 @@ logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler(sys.stdout))
 
 
-REDIS_HOST = os.getenv('REDIS_HOST', 'localhost')
-
 def get_cities():
     results = []
     with open('/cities.csv') as csv_file:
@@ -39,10 +36,10 @@ def get_cities():
     return results
 
 
-@app.route('/where-is-barret')
+@app.route('/where-is-joel')
 def where_is_barret():
     city = (random.choice(get_cities()))
-    return jsonify({'where-is-barret': city})
+    return jsonify({'where-is-joel': city})
 
 
 @app.route('/health_check')
